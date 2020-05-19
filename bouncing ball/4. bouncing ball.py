@@ -1,33 +1,35 @@
 import pygame
-
 pygame.init()
-white = 255, 255, 255
-red = 255, 0, 0
 
-height = 500
 width = 1000
-screen = pygame.display.set_mode((width, height))
+height = 500
 
-x = 0
-y = 0
-changex = 1
-changey = 1
+# setting the window size
+screen = pygame.display.set_mode((width,height))
+
+white = 255,255,255
+black = 0,0,0
+x = 50
+y = 50
+movex = 1
+movey = 1
 while True:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type==pygame.QUIT:             # for clicking cross
             pygame.quit()
             quit()
     screen.fill(white)
-    pygame.draw.circle(screen, red, [x, y], 50)
-    x += changex
-    y += changey
+    pygame.draw.circle(screen,black,(x,y),50)
+    x = x + movex
+    y = y + movey
 
-    if y > height - 50:
-        changey = -1
-    elif y < 50:
-        changey = 1
-    if x > width - 50:
-        changex = -1
-    elif x < 50:
-        changex = 1
-    pygame.display.flip()
+    # for keeping ball within height
+    if y > height-50 or y < 50:
+        movey = movey * -1
+
+    # for keeping ball within width
+    if x > width-50 or x < 50:
+        movex = movex * -1
+
+    # updating the screen
+    pygame.display.update()
