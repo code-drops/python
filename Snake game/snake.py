@@ -23,7 +23,6 @@ pygame.display.set_caption("Snake Game")
 
 
 # display text on screen
-
 def displayText(text,color,x,y,fontSize):
     font = pygame.font.SysFont(None,fontSize)
     screen_text = font.render(text,True,color)
