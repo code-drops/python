@@ -23,6 +23,7 @@ pygame.display.set_caption("Snake Game")
 
 
 # display text on screen
+
 def displayText(text,color,x,y,fontSize):
     font = pygame.font.SysFont(None,fontSize)
     screen_text = font.render(text,True,color)
@@ -92,6 +93,9 @@ def gameLoop():
         if len(snakeList) > snakeLength:
             snakeList.pop(0)
 
+        for l in snakeList[:-1]:
+            if x==l[0] and y==l[1]:
+                gameOver = True
 
         surface.fill(white)
         pygame.draw.rect(surface, red, (foodX, foodY, size, size))
